@@ -1,1 +1,99 @@
 https://www.eecs.tufts.edu/~dsculley/tutorial/rc/rc3.html#:~:text=The%20RC%20time%20constant%20is,the%20resistance%20R%2C%20in%20Ohms.
+
+
+/*
+===============================================================================
+ Name        : project5.c
+ Author      : Nhi and Sam
+ Version     :
+ Copyright   : $(copyright)
+ Description : main definition
+===============================================================================
+*/
+#include <stdio.h>
+
+//Define Port 0
+#define FIO0DIR (*(volatile unsigned int *)0x2009c000)
+#define FIO0PIN (*(volatile unsigned int *)0x2009c014)
+#define PINMODE0 (*(volatile unsigned int *)0x4002c040)
+
+
+// Registers
+#define PINSEL0 (*(volatile unsigned int *)0x4002C000)
+#define PINSEL1 (*(volatile unsigned int *)0x4002C004)
+#define PINSEL3 (*(volatile unsigned int *)0x4002C00C)
+#define PCONP (*(volatile unsigned int*)0x400FC0C4)
+#define AD0CR (*(volatile unsigned int*)0x40034000)
+#define AD0GDR (*(volatile unsigned int*)0x40034004)
+
+void configPins() {
+    // output external LEDs
+    FIO2DIR |= (1<<0) | (1<<1) | (1<<2) | (1<<3); // g5, b1, b2, b3
+    FIO0DIR |= (1<<4) | (1<<5) | (1<<10) | (1<<11) | (1<<9) | (1<<8) | (1<<7) | (1<<6) | (1<<0) | (1<<1) | (1<<18); // g1, g2, g3, g4, r1, r2, r3, r4, r5, r6, r7
+
+    // read input switches
+    FIO0DIR &= ~(1<<24) & ~(1<<17) & ~(1<<2) & ~(1<<26); // bsw1, bsw2, rsw1, rsw2
+    FIO1DIR &= ~(1<<30) & ~(1<<31); // gsw1, gsw2
+
+    // configure PINMODE - pull down (active high)
+    PINMODE1 &= ~(1<<16) & ~(1<<17); // blue sw1 (port 0, bits 16-17)
+    PINMODE0 &= ~(1<<2) & ~(1<<3); // blue sw2 (port 0, bits 20-21)
+    PINMODE3 &= ~(1<<28) & ~(1<<29); // grn sw1 (port 1, bits 28-29)
+    PINMODE3 &= ~(1<<30) & ~(1<<31); // grn sw2 (port 1, bits 30-31)
+    PINMODE1 &= ~(1<<20) & ~(1<<21); // red sw2 (port 0, bits 20-21)
+    PINMODE0 &= ~(1<<4) & ~(1<<5); // red sw1 (port 0, bits 4-5)
+}
+
+void config() { // pin configuration
+
+    // configure PINSEL to select AD0.0
+    PINSEL1 |= (1<<14);
+    PINSEL1 &= ~(1<<15);
+    PCONP |= (1<<12);
+    AD0CR |= (1<<21);
+
+
+}
+
+int triggerAtoD() { // analog to digital conversion
+
+	int result = 0;
+
+	AD0CR |= (1<<0); // set AD0CR to be used as the input
+	AD0CR &= ~(1<<16); // set BURST bit to 0
+	AD0CR |= (1<<24); // set bit 24 to 1 to start conversion
+	while (((AD0GDR >> 31) & 1) != 1) {} // wait for DONE bit to become 1
+	AD0CR &= ~(1<<24); // clear bit 24
+
+    // read result (bits 4-15 in AD0GDR)
+	result = (AD0GDR >> 4) & 0xfff;
+	//result = (AD0GDR << 15);
+	//result = (AD0GDR >> 15);
+
+    return result;
+}
+
+void wait(float seconds) {
+    volatile int count = seconds * 21.33e6 / 24;
+    while (count > 0) count--;
+}
+
+int main () {
+
+    int digitalV;
+
+	config();
+
+    while (1) {
+
+    	digitalV = triggerAtoD();
+    	printf("%d \n", digitalV);
+
+//    	 turn candle ON/OFF
+		if (digitalV >= 150) {
+		}
+		else if (digitalV <= 2) {
+		}
+		wait(.0005);
+    }
+}
