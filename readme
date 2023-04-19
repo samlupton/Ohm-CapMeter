@@ -35,7 +35,7 @@ Keep in mind that using multiple circuits can increase the complexity and cost o
 
 /*
 ===============================================================================
- Name        : project5.c
+ Name        : ohmmeter.c
  Author      : Nhi and Sam
  Version     :
  Copyright   : $(copyright)
@@ -48,7 +48,7 @@ Keep in mind that using multiple circuits can increase the complexity and cost o
 #define FIO0DIR (*(volatile unsigned int *)0x2009c000)
 #define FIO0PIN (*(volatile unsigned int *)0x2009c014)
 #define PINMODE0 (*(volatile unsigned int *)0x4002c040)
-
+#define PINMODE1 (*(volatile unsigned int *)0x4002c044)
 
 // Registers
 #define PINSEL0 (*(volatile unsigned int *)0x4002C000)
@@ -58,18 +58,6 @@ Keep in mind that using multiple circuits can increase the complexity and cost o
 #define AD0CR (*(volatile unsigned int*)0x40034000)
 #define AD0GDR (*(volatile unsigned int*)0x40034004)
 
-void configPins() {
-    // output external LEDs
-    FIO0DIR |= (1<<4) | (1<<5) | (1<<10) | (1<<11) | (1<<9) | (1<<8) | (1<<7) | (1<<6) | (1<<0) | (1<<1) | (1<<18); // g1, g2, g3, g4, r1, r2, r3, r4, r5, r6, r7
-
-    // read input switches
-    FIO0DIR &= ~(1<<24) & ~(1<<17) & ~(1<<2) & ~(1<<26); // bsw1, bsw2, rsw1, rsw2
-
-    // configure PINMODE - pull down (active high)
-    PINMODE0 &= ~(1<<2) & ~(1<<3); // blue sw2 (port 0, bits 20-21)
-    PINMODE0 &= ~(1<<4) & ~(1<<5); // red sw1 (port 0, bits 4-5)
-}
-
 void config() { // pin configuration
 
     // configure PINSEL to select AD0.0
@@ -77,6 +65,13 @@ void config() { // pin configuration
     PINSEL1 &= ~(1<<15);
     PCONP |= (1<<12);
     AD0CR |= (1<<21);
+    // disable pull-up/pull-down
+    PINMODE0 &= ~(1<<0) & ~(1 << 10) & ~(1<<14) & ~(1<<16) & ~(1<<18);
+    PINMODE0 |=	(1<<1) | (1 << 11) | (1<<15) | (1<<17) | (1<<19);
+    PINMODE1 &= ~(1<<14);
+    PINMODE1 |= (1<<15);
+    // set to HIGH
+    FIO0PIN |= (1<<0) | (1<<6) | (1<<7) | (1<<8) | (1<<9);
 }
 
 int triggerAtoD() { // analog to digital conversion
@@ -100,36 +95,85 @@ void wait(float seconds) {
     while (count > 0) count--;
 }
 
-//void pinSelect(int selectorInt) {
-//
-//}
+int R1(int i) {
+	int loadResistor;
+	switch (i) {
+		case 1:
+			FIO0DIR |= (1 << 9);
+			FIO0DIR &= ~(1 << 8) & ~(1 << 7) & ~(1 << 6) & ~(1 << 0);
+	    	printf("case 1 \n");
+	    	loadResistor = 670;
+			break;
+		case 2:
+			FIO0DIR |= (1 << 8);
+			FIO0DIR &= ~(1 << 9) & ~(1 << 7) & ~(1 << 6) & ~(1 << 0);
+	    	printf("case 2 \n");
+	    	loadResistor = 9860;
+			break;
+		case 3:
+			FIO0DIR |= (1 << 7);
+			FIO0DIR &= ~(1 << 8) & ~(1 << 9) & ~(1 << 6) & ~(1 << 0);
+	    	printf("case 3 \n");
+	    	loadResistor = 9927;
+			break;
+		case 4:
+			FIO0DIR |= (1 << 6);
+			FIO0DIR &= ~(1 << 8) & ~(1 << 7) & ~(1 << 9) & ~(1 << 0);
+	    	printf("case 4 \n");
+	    	loadResistor = 98520;
+			break;
+		case 5:
+			FIO0DIR |= (1 << 0);
+			FIO0DIR &= ~(1 << 8) & ~(1 << 7) & ~(1 << 6) & ~(1 << 9);
+	    	printf("case 5 \n");
+	    	loadResistor = 470000;
+
+			break;
+	}
+	return 	loadResistor;
+}
+
 
 int main () {
 
     float digitalV;
-    int selector = 0;
+    int i = 0;
+	float resistorValue = 0;
+	int loadResistor = 0;
+
 	config();
+
+	R1(2);
 
     while (1) {
 
     	digitalV = triggerAtoD();
 
-    	float resistorValue = (-1 * digitalV * 100000) / (digitalV - 4096);
 
-    	printf("%f ohms \n", resistorValue);
-
-//    	 turn candle ON/OFF
-		if (digitalV <= 1433) {
-//			pinSelect(i++);
-		} else if (digitalV >= 2662) {
-			//pinSelect(i++);
-		} else {}
-
-
-
-
+		if (digitalV <= 375 || digitalV >= 3300) { //digitalV <= 1433 || digitalV >= 2662
+			i++;
+			if (i > 5) {
+				i = 1;
+			}
+			loadResistor = R1(i);
 		}
-		wait(.0005);
-    }
+//		else if (digitalV > 2048) {
+//			loadResistor = R1(3);
+//
+//		} else {
+//			loadResistor = R1(2);
+//
+//		}
+
+
+
+		resistorValue = (-1 * digitalV * loadResistor) / (digitalV - 4096);
+    	printf("i == %d     %f ohms \n", i, resistorValue);
+    	printf("%f digitalV \n", digitalV);
+
+
+
+	}
 }
+
 
