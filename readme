@@ -2,20 +2,11 @@ https://www.eecs.tufts.edu/~dsculley/tutorial/rc/rc3.html#:~:text=The%20RC%20tim
 ***Chat GPT TALK
 
 For the capacitor range you specified (0.001 μF to 10 μF), a good resistor value to use would be around 1 kΩ to 100 kΩ. This will give you a time constant between 10 μs and 10 ms, which is suitable for this range of capacitance values.
-
 If you use a resistor value of 10 kΩ, for example, the time constant would be:
-
 τ = RC = 10 kΩ x 0.001 μF = 10 μs
-
 This would allow you to measure capacitors as small as 0.001 μF with a resolution of 10 μs.
-
-On the other hand, if you use a resistor value of 100 kΩ, the time constant would be:
-
-τ = RC = 100 kΩ x 10 μF = 1 s
-
-This would allow you to measure capacitors as large as 10 μF with a resolution of 1 second.
-
-Keep in mind that the accuracy of your capacitance meter will depend on the accuracy of the components used and the circuit design, so you may need to calibrate your meter for more precise measurements.
+On the other hand, if you use a resistor value of 100 kΩ, the time constant would be: τ = RC = 100 kΩ x 10 μF = 1 s
+This would allow you to measure capacitors as large as 10 μF with a resolution of 1 second. Keep in mind that the accuracy of your capacitance meter will depend on the accuracy of the components used and the circuit design, so you may need to calibrate your meter for more precise measurements.
 
 
 
