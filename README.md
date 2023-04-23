@@ -29,9 +29,9 @@ your measurements.
 
 ## Schematics and Drawings
 
-![My Image](image3.png =200x100)
-![My Image](image4.png =200x100)
-<img src="image3.png" alt="My Image" width="200" height="100">
+<img src="image3.png" alt="My Image" width="200" height="200">
+<img src="image4.png" alt="My Image" width="200" height="200">
+
 
 
 ## Useful Resources 
