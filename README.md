@@ -13,9 +13,9 @@ This would allow you to measure capacitors as small as 0.001 μF with a resoluti
 On the other hand, if you use a resistor value of 100 kΩ, the time constant would be: τ = RC = 100 kΩ x 10 μF = 1 s
 This would allow you to measure capacitors as large as 10 μF with a resolution of 1 second. Keep in mind that the accuracy 
 of your capacitance meter will depend on the accuracy of the components used and the circuit design, so you may need to calibrate 
-your meter for more precise measurements. * 
+your meter for more precise measurements. 
 
-Using multiple circuits with different resistor values can be a good approach to increase the measurement range and resolution of 
+* Using multiple circuits with different resistor values can be a good approach to increase the measurement range and resolution of 
 your capacitance meter. By using different resistor values, you can create multiple RC time constants and cover a wider range of 
 capacitance values. For example, you could use three circuits with resistors of 1 kΩ, 10 kΩ, and 100 kΩ, respectively. This would 
 give you time constants of 1 μs, 10 μs, and 100 μs, covering a capacitance range from 0.001 μF to 10 μF with a resolution of 1 μs.
