@@ -31,6 +31,8 @@ your measurements.
 
 ![My Image](image3.png =200x100)
 ![My Image](image4.png =200x100)
+<img src="image3.png" alt="My Image" width="200" height="100">
+
 
 ## Useful Resources 
 
