@@ -32,7 +32,7 @@ The voltage dividers are programmed to have only one load resistors connected to
 
 <img src="image3.png" alt="My Image" width="400" height="300">
 
-The analog to digital values are read from pin 15. A timer starts when then voltage divider value is read at zero volts. After this, the capacitro is charged until it reaches 2/3 of Vcc. The timer captures how long this takes and sets the time as the RC and the program does simple mathematics to solve for the capacitor value.
+The analog to digital values are read from pin 15. A timer starts when then voltage divider value is read at zero volts. After this, the capacitro is charged until it reaches 2/3 of Vcc. The timer captures how long this takes and sets the time as the RC time constant, τ, and the program does simple mathematics to solve for the capacitor value.
 
 <img src="image4.png" alt="My Image" width="400" height="300">
 
