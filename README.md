@@ -6,7 +6,7 @@ The capacitance meter code has been meticulously calibrated to measure capacitan
 
 ## ChatGPT Insight
 
-### ChatGPT provided a wealth of valuable insights on the topic of measuring electrical components. Allow me to share a snippet of my interaction with the chatbox when I inquired about the best methods for measuring capacitors and resistors.
+### ChatGPT provided a wealth of valuable insights on the topic of measuring electrical components. Here are some of the chatboxes responses.
 
 * For the capacitor range you specified (0.001 μF to 10 μF), a good resistor value to use would be around 1 kΩ to 100 kΩ. 
 This will give you a time constant between 10 μs and 10 ms, which is suitable for this range of capacitance values.
