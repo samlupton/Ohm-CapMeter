@@ -4,7 +4,7 @@ This repo contains source code and schematics for measruing resistance and capac
 
 ## ChatGPT Insight
 
-### ChatGPT gave lots of good insight on the topic of measurong electorcial comopnents. Below is some out my response when I got from the chatbox when asking it question regaruding how to measure capacitors and resistors. 
+### ChatGPT provided a wealth of valuable insights on the topic of measuring electrical components. Allow me to share a snippet of my interaction with the chatbox when I inquired about the best methods for measuring capacitors and resistors.
 
 For the capacitor range you specified (0.001 μF to 10 μF), a good resistor value to use would be around 1 kΩ to 100 kΩ. 
 This will give you a time constant between 10 μs and 10 ms, which is suitable for this range of capacitance values.
