@@ -4,7 +4,7 @@ https://www.eecs.tufts.edu/~dsculley/tutorial/rc/rc3.html#:~:text=The%20RC%20tim
 
 ### Chat GPT TALK
 
-ChatGPT gave lots of good insight on the topic of measurong electorcial comopnents. Below is some out my response when I got from the chatbox when asking it question regaruding how to measure capacitors and resistors. 
+## ChatGPT gave lots of good insight on the topic of measurong electorcial comopnents. Below is some out my response when I got from the chatbox when asking it question regaruding how to measure capacitors and resistors. 
 
 For the capacitor range you specified (0.001 μF to 10 μF), a good resistor value to use would be around 1 kΩ to 100 kΩ. 
 This will give you a time constant between 10 μs and 10 ms, which is suitable for this range of capacitance values.
@@ -14,11 +14,6 @@ On the other hand, if you use a resistor value of 100 kΩ, the time constant wou
 This would allow you to measure capacitors as large as 10 μF with a resolution of 1 second. Keep in mind that the accuracy 
 of your capacitance meter will depend on the accuracy of the components used and the circuit design, so you may need to calibrate 
 your meter for more precise measurements.
-
-
-
-
-## Should IO use multiple circuits with different resistor values?
 
 Using multiple circuits with different resistor values can be a good approach to increase the measurement range and resolution of 
 your capacitance meter. By using different resistor values, you can create multiple RC time constants and cover a wider range of 
