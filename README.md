@@ -29,8 +29,8 @@ your measurements.
 
 ## Schematics and Drawings
 
-<img src="image3.png" alt="My Image" width="400" height="200">
-<img src="image4.png" alt="My Image" width="400" height="200">
+<img src="image3.png" alt="My Image" width="400" height="300">
+<img src="image4.png" alt="My Image" width="400" height="300">
 
 
 
