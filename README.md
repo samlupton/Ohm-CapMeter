@@ -1,4 +1,4 @@
-# Capacitance Meter and Resistance Meter with LCP1769
+# Capacitance and Resistance Meter with LCP1769 Micro Controller
 
 This repository comprises of source code and schematics for accurately measuring resistance and capacitance using an LCP1769 microcontroller. The code has been written entirely in C++, ensuring reliability and consistency in the measurements.
 
