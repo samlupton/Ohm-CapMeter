@@ -2,7 +2,9 @@
 
 This repository comprises of source code and schematics for accurately measuring resistance and capacitance using an LCP1769 microcontroller. The code has been written entirely in C++, ensuring reliability and consistency in the measurements.
 
-The capacitance meter code has been meticulously calibrated to measure capacitance values spanning from 0.001uf to 100uf. Similarly, the resistance meter has been fine-tuned to accurately measure resistance values within the range of 100Ω to 1MΩ.
+The capacitance meter code has been meticulously calibrated to measure capacitance values spanning from 0.001μF to 100μF. Similarly, the resistance meter has been fine-tuned to accurately measure resistance values within the range of 100Ω to 1MΩ.
+
+For those wanting to replicate this project. You will need a LCP1769 Micro Controller and the MCUXpressor IDE. Set the project type as C/C++ (semi-hosted).
 
 ## ChatGPT Insight
 
