@@ -29,6 +29,8 @@ Keep in mind that using multiple circuits can increase the complexity and cost o
 factors such as switching speed and signal interference. However, it can be a useful approach to improve the accuracy and versatility of 
 your measurements.
 
+While I recommend the use of ChatGPT as a useful resource for accessing detailed knowledge quickly, it is important to note that as with any information source, the accuracy and reliability of the information provided by ChatGPT cannot always be guaranteed. While the model is trained on a vast amount of data, it may generate false or inaccurate information in some cases. Therefore, it is always a good idea to cross-check information obtained from ChatGPT with other reputable sources and exercise caution when relying solely on its responses.
+
 ## Schematics and Drawings
 To ensure accurate measurements, the voltage dividers have been programmed to allow only one load resistor to be connected to Vcc at any given time. All other resistors are set to float based on digital-to-analog values read at pin 15.
 
@@ -38,14 +40,7 @@ To accurately measure the capacitance values, the analog-to-digital values are r
 
 <img src="image4.png" alt="My Image" width="400" height="300">
 
-
-
 ## Resources 
 
 * The most valuable resource was my partner, Nhi Loung, an accomplished electrical engineer from Oklahoma. Should you need to get in touch with her, her email address is nhi.luong13@gmail.com.
 * This [link](https://www.eecs.tufts.edu/~dsculley/tutorial/rc/rc3.html#:~:text=The%20RC%20time%20constant%20is,the%20resistance%20R%2C%20in%20Ohms) is a great resource for understanding how one can measure a capacitor using the RC time constant.
-
-
-
-
-
