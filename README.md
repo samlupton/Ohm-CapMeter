@@ -29,6 +29,9 @@ your measurements.
 
 ## Schematics and Drawings
 
+![My Image](image3.png)
+![My Image](image4.png)
+
 ## Useful Resources 
 
 This [link](https://www.eecs.tufts.edu/~dsculley/tutorial/rc/rc3.html#:~:text=The%20RC%20time%20constant%20is,the%20resistance%20R%2C%20in%20Ohms) is a great resource for understanding how one can measure a capacitor using the RC time constant.
