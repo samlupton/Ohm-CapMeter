@@ -2,6 +2,8 @@
 
 This repository comprises of source code and schematics for accurately measuring resistance and capacitance using an LCP1769 microcontroller. The code has been written entirely in C++, ensuring reliability and consistency in the measurements.
 
+The capacitance meter code has been meticulously calibrated to measure capacitance values spanning from 0.001uf to 100uf. Similarly, the resistance meter has been fine-tuned to accurately measure resistance values within the range of 100Ω to 1MΩ.
+
 ## ChatGPT Insight
 
 ### ChatGPT provided a wealth of valuable insights on the topic of measuring electrical components. Allow me to share a snippet of my interaction with the chatbox when I inquired about the best methods for measuring capacitors and resistors.
