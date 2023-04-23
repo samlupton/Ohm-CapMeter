@@ -31,6 +31,10 @@ your measurements.
 
 While I recommend the use of ChatGPT as a useful resource for accessing detailed knowledge quickly, it is important to note that as with any information source, the accuracy and reliability of the information provided by ChatGPT cannot always be guaranteed. While the model is trained on a vast amount of data, it may generate false or inaccurate information in some cases. Therefore, it is always a good idea to cross-check information obtained from ChatGPT with other reputable sources and exercise caution when relying solely on its responses.
 
+
+## Note
+* It is important to note that the accuracy of the measurements obtained may be affected by various factors such as the actual values of the load resistors and system noise. To mitigate these factors, it is recommended to measure the load resistors to be used and input their values into the code accordingly before running it. Furthermore, to obtain even more accurate readings, an array has been implemented to calculate the average value of the components and account for any noise present in the system. Depending on the level of noise present in your system, it may be necessary to increase the number of elements in the array to obtain more precise results.
+
 ## Schematics and Drawings
 To ensure accurate measurements, the voltage dividers have been programmed to allow only one load resistor to be connected to Vcc at any given time. All other resistors are set to float based on analog-to-digital values read at pin 15.
 
