@@ -4,7 +4,7 @@ This [link](https://www.eecs.tufts.edu/~dsculley/tutorial/rc/rc3.html#:~:text=Th
 
 ### Chat GPT TALK
 
-## ChatGPT gave lots of good insight on the topic of measurong electorcial comopnents. Below is some out my response when I got from the chatbox when asking it question regaruding how to measure capacitors and resistors. 
+# ChatGPT gave lots of good insight on the topic of measurong electorcial comopnents. Below is some out my response when I got from the chatbox when asking it question regaruding how to measure capacitors and resistors. 
 
 For the capacitor range you specified (0.001 μF to 10 μF), a good resistor value to use would be around 1 kΩ to 100 kΩ. 
 This will give you a time constant between 10 μs and 10 ms, which is suitable for this range of capacitance values.
