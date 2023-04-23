@@ -1,8 +1,8 @@
+# Capacitance Meter and Resistance Meter with LCP1769
 
-This [link](https://www.eecs.tufts.edu/~dsculley/tutorial/rc/rc3.html#:~:text=The%20RC%20time%20constant%20is,the%20resistance%20R%2C%20in%20Ohms) is a great resource for understanding how one can measure a capacitor using the RC time constant.
+This repo contains source code and schematics for measruing resistance and capacitance with an LCP1769. All code is written in C++.
 
-
-# Chat GPT TALK
+## ChatGPT Insight
 
 ### ChatGPT gave lots of good insight on the topic of measurong electorcial comopnents. Below is some out my response when I got from the chatbox when asking it question regaruding how to measure capacitors and resistors. 
 
@@ -24,6 +24,8 @@ then measure the charging time for each circuit and calculate the capacitance va
 Keep in mind that using multiple circuits can increase the complexity and cost of your capacitance meter, and you may need to consider
 factors such as switching speed and signal interference. However, it can be a useful approach to improve the accuracy and versatility of 
 your measurements.
+
+This [link](https://www.eecs.tufts.edu/~dsculley/tutorial/rc/rc3.html#:~:text=The%20RC%20time%20constant%20is,the%20resistance%20R%2C%20in%20Ohms) is a great resource for understanding how one can measure a capacitor using the RC time constant.
 
 
 
