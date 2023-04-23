@@ -28,7 +28,7 @@ factors such as switching speed and signal interference. However, it can be a us
 your measurements.
 
 ## Schematics and Drawings
-
+The voltage dividers are programmed to have only one load resistors connected to V_cc at any given time. All other resistors are set to float bases on digital to analog values read at the pin.
 <img src="image3.png" alt="My Image" width="400" height="300">
 <img src="image4.png" alt="My Image" width="400" height="300">
 
