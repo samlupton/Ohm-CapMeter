@@ -25,6 +25,10 @@ Keep in mind that using multiple circuits can increase the complexity and cost o
 factors such as switching speed and signal interference. However, it can be a useful approach to improve the accuracy and versatility of 
 your measurements.
 
+## Schematics and Drawings
+
+## Useful Resources 
+
 This [link](https://www.eecs.tufts.edu/~dsculley/tutorial/rc/rc3.html#:~:text=The%20RC%20time%20constant%20is,the%20resistance%20R%2C%20in%20Ohms) is a great resource for understanding how one can measure a capacitor using the RC time constant.
 
 
