@@ -29,8 +29,8 @@ your measurements.
 
 ## Schematics and Drawings
 
-![My Image](image3.png)
-![My Image](image4.png)
+![My Image](image3.png =200x100)
+![My Image](image4.png =200x100)
 
 ## Useful Resources 
 
