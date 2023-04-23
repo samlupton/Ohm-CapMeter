@@ -32,7 +32,7 @@ your measurements.
 While I recommend the use of ChatGPT as a useful resource for accessing detailed knowledge quickly, it is important to note that as with any information source, the accuracy and reliability of the information provided by ChatGPT cannot always be guaranteed. While the model is trained on a vast amount of data, it may generate false or inaccurate information in some cases. Therefore, it is always a good idea to cross-check information obtained from ChatGPT with other reputable sources and exercise caution when relying solely on its responses.
 
 ## Schematics and Drawings
-To ensure accurate measurements, the voltage dividers have been programmed to allow only one load resistor to be connected to Vcc at any given time. All other resistors are set to float based on digital-to-analog values read at pin 15.
+To ensure accurate measurements, the voltage dividers have been programmed to allow only one load resistor to be connected to Vcc at any given time. All other resistors are set to float based on analog-to-digital values read at pin 15.
 
 <img src="image3.png" alt="My Image" width="400" height="300">
 
