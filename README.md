@@ -46,5 +46,5 @@ To accurately measure the capacitance values, the analog-to-digital values are r
 
 ## Resources 
 
-* The most valuable resource was my partner, Nhi Luong, an accomplished electrical engineer from Oklahoma. Should you need to get in touch with her, her email address is nhi.luong13@gmail.com.
+* The most valuable resource was my partner, Nhi Luong, an accomplished electrical engineer from Oklahoma. Should you need to get in touch with her, her email address is nhi.luong13@gmail.com. 
 * This [link](https://www.eecs.tufts.edu/~dsculley/tutorial/rc/rc3.html#:~:text=The%20RC%20time%20constant%20is,the%20resistance%20R%2C%20in%20Ohms) is a great resource for understanding how one can measure a capacitor using the RC time constant.
