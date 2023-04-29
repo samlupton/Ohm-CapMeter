@@ -9,6 +9,8 @@
 */
 #include <stdio.h>
 
+
+
 //Define Port 0
 #define FIO0DIR (*(volatile unsigned int *)0x2009c000)
 #define FIO0PIN (*(volatile unsigned int *)0x2009c014)
@@ -24,6 +26,8 @@
 #define AD0GDR (*(volatile unsigned int*)0x40034004)
 #define T0TCR (*(volatile unsigned int*)0x40004004)
 #define T0TC (*(volatile unsigned int*)0x40004008)
+//#define PCLKSEL0 (*(volatile unsigned int *)0x400FC1A8)
+
 
 void config() { // pin configuration
 
@@ -33,6 +37,10 @@ void config() { // pin configuration
     PCONP |= (1<<12);
     AD0CR |= (1<<21);
     FIO0DIR |= (1<<2);
+
+//    PCONP |= (1<<1); // set PCTIMO
+//    PCLKSEL0 |= (1<<2) | (1<<3); // select PCLK_TIMER0
+
 
 
     // disable pull-up/pull-down
@@ -63,27 +71,27 @@ void wait(float seconds) {
 }
 
 float getTime() {
-
+	float time = 0;
+	int totalTime = 0;
 	FIO0PIN &= ~(1<<2);
-	wait(1.0);
-    int start = T0TC; // note starting time
-    T0TCR |= (1<<0); // start timer
-	FIO0PIN |= (1<<2);
-    float time = 0;
-    int totalTime = 0;
+	wait(5.0);
+	T0TCR |= (1 << 0); // start timer
+	int start = T0TC; // note starting time
+	FIO0PIN |= (1<<2);\
 
-    while(triggerAtoD() < 2735){} // checking if voltage is 2/3 of VCC (3.3V)
-
-    int stop = T0TC; // note stop time
+    while(triggerAtoD() >= 2730){
+    	int stop = T0TC; // note stop time
+    	break;
+} // checking if voltage is 2/3 of VCC (3.3V) 2730
+//	int stop = T0TC; // note stop time
     T0TCR &= ~(1<<0); // stop timer
+
     totalTime = stop - start;
-    time = totalTime * 1e-6;
+    time = totalTime;
 	printf("Total Time: %f \n", time);
 
     return time;
 }
-
-
 
 int main() {
 
@@ -93,8 +101,8 @@ int main() {
 
 	while (1) {
 
-		capacitorValue = (getTime() / 10000.0)* 1e6;
-
+		capacitorValue = (getTime() / 12000.0);
+//		9843.0
 		printf("%f uf \n", capacitorValue);
 
 	}
