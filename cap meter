@@ -75,7 +75,7 @@ double getTime() {
 	wait(4.5);
 	T0TCR |= (1 << 0); // start timer
 	int start = T0TC; // note starting time
-	FIO0PIN |= (1<<2);\
+	FIO0PIN |= (1<<2);
 
     while (triggerAtoD() < 2530) {
 	}
@@ -91,6 +91,16 @@ double getTime() {
     return time;
 }
 
+//void resetCap() {
+//
+//	FIO0DIR |= (1 << 3);
+//	FIO0PIN &= ~(1 << 3);
+//	wait(1.0);
+//	FIO0DIR &= ~(1 << 3);
+//
+//
+//}
+
 int main() {
 
 
@@ -100,12 +110,15 @@ int main() {
 
 	while (1) {
 
-		capacitorValue = (getTime() / 1965.0) - .034097;
-		// .007010 is laten capacitance
+		capacitorValue = (getTime() / 1965.0)  - .034097;
+
+		// .034097 is laten capacitance 1965
 //		9843.0
 
-			printf("%f uf \n", capacitorValue);
-
+		printf("%f uf \n", capacitorValue);
+//		 resetCap();
+		FIO0PIN &= ~(1 << 2);
+		wait(1.0);
 	}
 }
 
