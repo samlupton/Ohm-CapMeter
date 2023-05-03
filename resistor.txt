@@ -60,43 +60,50 @@ void wait(float seconds) {
     while (count > 0) count--;
 }
 
-int R1(int i) {
-	int loadResistor;
+double R1(int i) {
+	double loadResistor;
 	switch (i) {
 		case 1:
 			FIO0DIR |= (1 << 9);
 			FIO0DIR &= ~(1 << 8) & ~(1 << 7) & ~(1 << 6) & ~(1 << 0);
-	    	printf("case 1 \n");
-	    	loadResistor = 670;
+//	    	printf("case 1 \n");
+//	    	loadResistor = 670;680 987
+	    	loadResistor = 2970.0;
+
 			break;
 		case 2:
 			FIO0DIR |= (1 << 8);
 			FIO0DIR &= ~(1 << 9) & ~(1 << 7) & ~(1 << 6) & ~(1 << 0);
-	    	printf("case 2 \n");
-	    	loadResistor = 9860;
+//	    	printf("case 2 \n");
+	    	loadResistor = 1778.0;
 			break;
 		case 3:
 			FIO0DIR |= (1 << 7);
 			FIO0DIR &= ~(1 << 8) & ~(1 << 9) & ~(1 << 6) & ~(1 << 0);
-	    	printf("case 3 \n");
-	    	loadResistor = 9927;
+//	    	printf("case 3 \n");
+	    	loadResistor = 9927.0;
 			break;
 		case 4:
 			FIO0DIR |= (1 << 6);
 			FIO0DIR &= ~(1 << 8) & ~(1 << 7) & ~(1 << 9) & ~(1 << 0);
-	    	printf("case 4 \n");
-	    	loadResistor = 98520;
+//	    	printf("case 4 \n");
+	    	loadResistor = 98520.0;
 			break;
 		case 5:
 			FIO0DIR |= (1 << 0);
 			FIO0DIR &= ~(1 << 8) & ~(1 << 7) & ~(1 << 6) & ~(1 << 9);
-	    	printf("case 5 \n");
-	    	loadResistor = 470000;
+//	    	printf("case 5 \n"); 465500
+	    	loadResistor = 388200.0;
 
 			break;
 	}
+		    	printf("case %d \n", i);
+
 	return 	loadResistor;
 }
+
+
+
 
 
 int main () {
@@ -104,37 +111,29 @@ int main () {
     float digitalV;
     int i = 0;
 	float resistorValue = 0;
-	int loadResistor = 0;
-
+	double loadResistor = 0;
 	config();
 
-	R1(2);
+	R1(3);
 
     while (1) {
+
 
     	digitalV = triggerAtoD();
 
 
-		if (digitalV <= 375 || digitalV >= 3300) { //digitalV <= 1433 || digitalV >= 2662
+		if (digitalV <= 100 || digitalV >= 3500) { //digitalV <= 1433 || digitalV >= 2662         if (digitalV <= 375 || digitalV >= 3300)
 			i++;
 			if (i > 5) {
 				i = 1;
 			}
 			loadResistor = R1(i);
 		}
-//		else if (digitalV > 2048) {
-//			loadResistor = R1(3);
-//
-//		} else {
-//			loadResistor = R1(2);
-//
-//		}
 
 
+		resistorValue = (-1 * digitalV * loadResistor) / (digitalV - 4096.0);
 
-		resistorValue = (-1 * digitalV * loadResistor) / (digitalV - 4096);
-    	printf("i == %d     %f ohms \n", i, resistorValue);
-    	printf("%f digitalV \n", digitalV);
+    	printf("%f ohms \n", resistorValue);
 
 
 
