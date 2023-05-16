@@ -38,11 +38,11 @@ While I recommend the use of ChatGPT as a useful resource for accessing detailed
 ## Schematics and Drawings
 To ensure accurate measurements, the voltage dividers have been programmed to allow only one load resistor to be connected to Vcc at any given time. All other resistors are set to float based on analog-to-digital values read at pin 15.
 
-<img src="thumbnail_image (1).png" alt="My Image" width="400" height="300">
+<img src="thumbnail_image.png" alt="My Image" width="400" height="300">
 
 To accurately measure the capacitance values, the analog-to-digital values are read from pin 15. Once the voltage divider value is read at zero volts, a timer is initiated. The capacitor is then charged until it reaches 2/3 of Vcc, while the timer captures the time taken. This time is then set as the RC time constant, τ, and simple mathematical calculations are performed to solve for the capacitor value.
 
-<img src="thumbnail_image.png" alt="My Image" width="400" height="300">
+<img src="thumbnail_image (1).png" alt="My Image" width="400" height="300">
 
 ## Resources 
 
