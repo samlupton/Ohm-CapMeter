@@ -66,63 +66,46 @@ double R1(int i) {
 		case 1:
 			FIO0DIR |= (1 << 9);
 			FIO0DIR &= ~(1 << 8) & ~(1 << 7) & ~(1 << 6) & ~(1 << 0);
-//	    	printf("case 1 \n");
-//	    	loadResistor = 670;680 987
-	    	loadResistor = 2970.0;
-
+	    		loadResistor = 2970.0;
 			break;
 		case 2:
 			FIO0DIR |= (1 << 8);
 			FIO0DIR &= ~(1 << 9) & ~(1 << 7) & ~(1 << 6) & ~(1 << 0);
-//	    	printf("case 2 \n");
-	    	loadResistor = 1778.0;
+	    		loadResistor = 1778.0;
 			break;
 		case 3:
 			FIO0DIR |= (1 << 7);
 			FIO0DIR &= ~(1 << 8) & ~(1 << 9) & ~(1 << 6) & ~(1 << 0);
-//	    	printf("case 3 \n");
-	    	loadResistor = 9927.0;
+	    		loadResistor = 9927.0;
 			break;
 		case 4:
 			FIO0DIR |= (1 << 6);
 			FIO0DIR &= ~(1 << 8) & ~(1 << 7) & ~(1 << 9) & ~(1 << 0);
-//	    	printf("case 4 \n");
-	    	loadResistor = 98520.0;
+	    		loadResistor = 98520.0;
 			break;
 		case 5:
 			FIO0DIR |= (1 << 0);
 			FIO0DIR &= ~(1 << 8) & ~(1 << 7) & ~(1 << 6) & ~(1 << 9);
-//	    	printf("case 5 \n"); 465500
-	    	loadResistor = 388200.0;
-
+	    		loadResistor = 388200.0;
 			break;
 	}
-		    	printf("case %d \n", i);
-
 	return 	loadResistor;
 }
 
-
-
-
-
 int main () {
 
-    float digitalV;
-    int i = 0;
+    	float digitalV;
+    	int i = 0;
 	float resistorValue = 0;
 	double loadResistor = 0;
 	config();
-
 	R1(3);
+	
+   	while (1) {
 
-    while (1) {
-
-
-    	digitalV = triggerAtoD();
-
-
-		if (digitalV <= 100 || digitalV >= 3500) { //digitalV <= 1433 || digitalV >= 2662         if (digitalV <= 375 || digitalV >= 3300)
+    		digitalV = triggerAtoD();
+		
+		if (digitalV <= 100 || digitalV >= 3500) {  
 			i++;
 			if (i > 5) {
 				i = 1;
@@ -130,12 +113,7 @@ int main () {
 			loadResistor = R1(i);
 		}
 
-
 		resistorValue = (-1 * digitalV * loadResistor) / (digitalV - 4096.0);
-
-    	printf("%f ohms \n", resistorValue);
-
-
-
+    		printf("%f ohms \n", resistorValue);
 	}
 }
